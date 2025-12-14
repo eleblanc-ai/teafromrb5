@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tea from RB5</title>
+    <title>Tea from RB5 Gallery</title>
+    <link rel="stylesheet" href="https://use.typekit.net/abc1def.css">
     <style>
         * {
             margin: 0;
@@ -12,330 +13,132 @@
         }
 
         body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            background: #2a2a2a;
-            color: #e8e8e8;
-            line-height: 1.6;
-        }
-
-        .top-bar {
-            background: #1a1a1a;
-            padding: 0.8rem 2rem;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-bottom: 1px solid #3d3d3d;
-        }
-
-        .instagram-link {
-            color: #c9b896;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .instagram-link:hover {
-            color: #d4c5a9;
+            background-color: #000;
+            font-family: 'Minion Pro', 'minion-pro', Georgia, serif;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
         header {
             text-align: center;
-            padding: 5rem 2rem 3rem;
-            background: #1a1a1a;
-            border-bottom: 1px solid #3d3d3d;
+            margin-bottom: 60px;
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            color: #e8e8e8;
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
+            color: #F5E6D3;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            font-family: 'Arial', 'Helvetica', sans-serif;
-        }
-
-        .tagline {
-            font-size: 1rem;
-            color: #c9b896;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-        }
-
-        .order-info {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-            letter-spacing: 0.5px;
-            margin-top: 1.5rem;
-        }
-
-        .order-info a {
-            color: #c9b896;
-            text-decoration: none;
-            border-bottom: 1px solid #8b7d6b;
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .order-info a:hover {
-            color: #d4c5a9;
-            border-color: #c9b896;
-        }
-
-        main {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .tea-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .tea-card {
-            background: #1a1a1a;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            border: 1px solid #3d3d3d;
-        }
-
-        .tea-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .tea-image-container {
-            width: 100%;
-            height: 450px;
-            overflow: hidden;
-            position: relative;
-            background: #000;
-        }
-
-        .tea-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-
-        .tea-card:hover .tea-image {
-            transform: scale(1.05);
-        }
-
-        .tea-content {
-            padding: 2.5rem;
-        }
-
-        .tea-name {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 0.8rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-            font-family: 'Arial', 'Helvetica', sans-serif;
         }
 
-        .tea-subtitle {
-            font-size: 0.95rem;
-            color: #7dd3c0;
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .divider {
-            width: 60px;
-            height: 1px;
-            background: #8b7d6b;
-            margin: 1.5rem auto;
-        }
-
-        .steeping-section {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3d3d3d;
-        }
-
-        .steeping-section h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #c9b896;
-            margin-bottom: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .info-row {
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-        }
-
-        .info-row:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .info-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #8b7d6b;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
-        }
-
-        .info-content {
-            font-size: 0.95rem;
-            color: #b0b0b0;
+        .subtitle {
+            color: #F5E6D3;
+            font-size: 1.2rem;
             line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: #1a1a1a;
-            color: #8b7d6b;
-            margin-top: 5rem;
-            border-top: 1px solid #3d3d3d;
+        a {
+            color: #A78BFA;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        footer p {
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            color: #8b7d6b;
+        a:hover {
+            color: #60A5FA;
         }
 
-        @media (max-width: 768px) {
-            .top-bar {
-                padding: 0.8rem 1rem;
+        a:visited {
+            color: #C084FC;
+        }
+
+        a:active {
+            color: #818CF8;
+        }
+
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            body {
+                padding: 20px 10px;
             }
 
             h1 {
-                font-size: 2.5rem;
-                letter-spacing: 4px;
+                font-size: 2rem;
             }
 
-            .tagline {
-                font-size: 0.85rem;
-                letter-spacing: 2px;
-            }
-
-            .tea-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .tea-image-container {
-                height: 350px;
-            }
-
-            main {
-                padding: 3rem 1rem;
+            .subtitle {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Tea from RB5</h1>
-        <p class="tagline">Handcrafted Tea Blends</p>
-        <p class="order-info">Reach out on <a href="https://www.instagram.com/teafromrb5/" target="_blank">Instagram</a> for custom
-         orders in the DMV area.</p>
+        <h1>Welcome to Tea from RB5!</h1>
+        <p class="subtitle">🚀 Tea from RB5 reporting for duty. Cosmic blends, grounded rituals, and a very good space cat. 🐈‍⬛✨</p>
+        <p class="subtitle" style="margin-top: 15px;"><a href="https://www.instagram.com/teafromrb5">Reach out on Instagram for pickup orders</a></p>
     </header>
-
-    <main>
-        <div class="tea-grid">
-            <!-- Happy Day Tea -->
-            <div class="tea-card">
-                <div class="tea-image-container">
-                    <img src="Tea-happy-day.jpg" alt="Happy Day Tea" class="tea-image">
-                </div>
-                <div class="tea-content">
-                    <h2 class="tea-name">Happy Day</h2>
-                    <p class="tea-subtitle">Clarity · Creativity · Calm · Luck · Success</p>
-                    <div class="steeping-section">
-                   
-                        <div class="info-row">
-                            <div class="info-label">Ingredients</div>
-                            <div class="info-content">Pea flower, orange, chamomile, jasmine, lavender</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Instructions</div>
-                            <div class="info-content">Steep in boiling water for 5–7 minutes</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Serving</div>
-                            <div class="info-content">Enjoy hot or iced. Add lemon to watch the color change from blue to purple.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Meaningful Connection Tea -->
-            <div class="tea-card">
-                <div class="tea-image-container">
-                    <img src="Tea-meaningful-connections.jpg" alt="Meaningful Connection Tea" class="tea-image">
-                </div>
-                <div class="tea-content">
-                    <h2 class="tea-name">Meaningful Connection</h2>
-                    <p class="tea-subtitle">Love · Friendship · Peace · Communication</p>
-                    <div class="steeping-section">
-                        <div class="info-row">
-                            <div class="info-label">Ingredients</div>
-                            <div class="info-content">Earl Grey, rose, lavender, cardamom</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Instructions</div>
-                            <div class="info-content">Steep in boiling water for 3–5 minutes</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Serving</div>
-                            <div class="info-content">An energizing black tea, I love this combined with soy milk and maple syrup.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- New Perspectives Tea -->
-            <div class="tea-card">
-                <div class="tea-image-container">
-                    <img src="Tea-new-perspectives.jpg" alt="New Perspectives Tea" class="tea-image">
-                </div>
-                <div class="tea-content">
-                    <h2 class="tea-name">New Perspective</h2>
-                    <p class="tea-subtitle">Insight · Strength · Positive Change</p>
-                    <div class="steeping-section">
-                        <div class="info-row">
-                            <div class="info-label">Ingredients</div>
-                            <div class="info-content">Balsam fir, cinnamon, orange, clove</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Instructions</div>
-                            <div class="info-content">Steep in boiling water for 5–7 minutes</div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-label">Serving</div>
-                            <div class="info-content">This warming blend is perfect for cold days.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
+    <div class="gallery">
+        <div class="image-container">
+            <img src="final-magical-insta.png" alt="Magical Tea from Another Planet">
         </div>
-    </main>
-
-    <footer>
-        <p>&copy; Tea from RB5, 2025</p>
-    </footer>
+        <div class="image-container">
+            <img src="final-tfrb5-insta.png" alt="Tea from RB5 with Cat">
+        </div>
+        <div class="image-container">
+            <img src="final-handcrafted-insta.png" alt="Handcrafted Alexandria, Virginia">
+        </div>
+        <div class="image-container">
+            <img src="final-hd-insta.png" alt="Happy Day Tea">
+        </div>
+        <div class="image-container">
+            <img src="final-np-insta.png" alt="New Perspective Tea">
+        </div>
+        <div class="image-container">
+            <img src="final-mc-insta.png" alt="Meaningful Connection Tea">
+        </div>
+    </div>
 </body>
 </html>
