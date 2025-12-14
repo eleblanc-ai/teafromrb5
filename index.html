@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tea from RB5 Gallery</title>
     <link rel="stylesheet" href="https://use.typekit.net/abc1def.css">
+
     <style>
         * {
             margin: 0;
@@ -12,8 +13,41 @@
             box-sizing: border-box;
         }
 
-        body {
-            background-color: #000;
+        a {
+            color: #A78BFA;               /* soft purple */
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #A78BFA, #60A5FA);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        a:hover {
+            color: #60A5FA;               /* soft blue */
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+        }
+
+        a:visited {
+            color: #C084FC;               /* lavender */
+        }
+
+                body {
+                    background-color: #000;
             font-family: 'Minion Pro', 'minion-pro', Georgia, serif;
             padding: 40px 20px;
             min-height: 100vh;
@@ -41,49 +75,76 @@
             margin: 0 auto;
         }
 
-        a {
-            color: #A78BFA;
-            text-decoration: underline;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #60A5FA;
-        }
-
-        a:visited {
-            color: #C084FC;
-        }
-
-        a:active {
-            color: #818CF8;
-        }
-
         .gallery {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            align-items: stretch;
         }
 
         .image-container {
             position: relative;
-            overflow: hidden;
+            aspect-ratio: 2 / 3;
+            width: 100%;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            perspective: 1000px;
         }
 
-        .image-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .image-container img {
+        .card-inner {
+            position: relative;
             width: 100%;
-            height: auto;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .image-container.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 8px;
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
+            border-radius: 8px;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-back-content {
+            color: #F5E6D3;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .card-back-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #A78BFA;
         }
 
         @media (max-width: 1024px) {
@@ -96,11 +157,6 @@
         @media (max-width: 640px) {
             .gallery {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            body {
-                padding: 20px 10px;
             }
 
             h1 {
@@ -113,32 +169,116 @@
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to Tea from RB5!</h1>
-        <p class="subtitle">🚀 Tea from RB5 reporting for duty. Cosmic blends, grounded rituals, and a very good space cat. 🐈‍⬛✨</p>
-        <p class="subtitle" style="margin-top: 15px;"><a href="https://www.instagram.com/teafromrb5">Reach out on Instagram for pickup orders</a></p>
-    </header>
-    
-    <div class="gallery">
-        <div class="image-container">
-            <img src="final-magical-insta.png" alt="Magical Tea from Another Planet">
-        </div>
-        <div class="image-container">
-            <img src="final-tfrb5-insta.png" alt="Tea from RB5 with Cat">
-        </div>
-        <div class="image-container">
-            <img src="final-handcrafted-insta.png" alt="Handcrafted Alexandria, Virginia">
-        </div>
-        <div class="image-container">
-            <img src="final-hd-insta.png" alt="Happy Day Tea">
-        </div>
-        <div class="image-container">
-            <img src="final-np-insta.png" alt="New Perspective Tea">
-        </div>
-        <div class="image-container">
-            <img src="final-mc-insta.png" alt="Meaningful Connection Tea">
+
+<header>
+    <h1>Welcome to Tea from RB5!</h1>
+    <p class="subtitle">🚀 Tea from RB5 reporting for duty. Cosmic blends, grounded rituals, and a very good space cat. 🐈‍⬛✨</p>
+    <p class="subtitle" style="margin-top: 15px;"><a href="https://www.instagram.com/teafromrb5">Reach out on Instagram to place a pickup or drop-off order in Alexandria, VA!</a></p>
+</header>
+
+<div class="gallery">
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-magical-website.jpg" alt="Magical Tea from Another Planet">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <p>✨ Welcome to tea that feels a little otherworldly! ✨</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-tfrb5-website.png" alt="Tea from RB5 with Cat">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <p>🚀 Tea from RB5 reporting for duty. Cosmic blends, grounded rituals, and a very good space cat. 🐈‍⬛✨</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-hc-website.jpg" alt="Handcrafted Alexandria, Virginia">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <p>🫖 Handcrafted in Alexandria, Virginia.<br>Small batches. Big feelings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-hd-website.jpg" alt="Happy Day Tea">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <h3>☀️ Happy Day</h3>
+                    <p>A bright, calming blend for clarity and creativity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-np-website.jpg" alt="New Perspective Tea">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <h3>💜 New Perspective</h3>
+                    <p>A warming, introspective blend for insight and clarity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="final-mc-website.jpg" alt="Meaningful Connection Tea">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content">
+                    <h3>💜 Meaningful Connection</h3>
+                    <p>Made for shared moments and memorable conversations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const cards = document.querySelectorAll('.image-container');
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+
+            if (card.classList.contains('flipped')) {
+                card.classList.remove('flipped');
+                return;
+            }
+
+            cards.forEach(c => c.classList.remove('flipped'));
+            card.classList.add('flipped');
+        });
+    });
+</script>
+
 </body>
 </html>
